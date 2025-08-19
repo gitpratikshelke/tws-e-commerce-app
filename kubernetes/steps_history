@@ -1,0 +1,126 @@
+1  docker ps
+    2  ls
+    3  cd tws-e-commerce-app
+    4  ls
+    5  tree
+    6  sudo apt install tree
+    7  tree
+    8  clear
+    9  curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.27.0/kind-linux-amd64
+   10  chmod +x ./kind
+   11  sudo mv ./kind /usr/local/bin/kind
+   12  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   13  chmod +x kubectl
+   14  sudo mv ./kubectl /usr/local/bin/kubectl
+   15  kind version
+   16  kubectl version
+   17  clear
+   18  docker login
+   19  docker build -t pratik83/easyshop:latest
+   20  docker build -t pratik83/easyshop:latest .
+   21  docker push your-dockerhub-pratik83/easyshop:latest
+   22  docker push pratik83/easyshop:latest
+   23  history
+   24  clear
+   25  ls
+   26  docker build -t pratik83/easyshop-migration:latest
+   27  docker build -t pratik83/easyshop-migration:latest -f scripts/Dockerfile.migration .
+   28  docker push pratik83/easyshop-migration:latest
+   29  clear
+   30  cd kubernetes
+   31  ls
+   32  cat 00-cluster-issuer.yml
+   33  vim 00-kind-config.yaml
+   34  kind create cluster --name easyshop --config kubernetes/00-kind-config.yaml
+   35  cat 00-kind-config.yaml
+   36  cd
+   37  kind create cluster --name easyshop --config kubernetes/00-kind-config.yaml
+   38  kind create cluster --name easyshop --config ~/tws-e-commerce-app/kubernetes/00-kind-config.yaml
+   39  ls
+   40  cd tws-e-commerce-app
+   41  ls
+   42  cd kubernetes
+   43  ls
+   44  kubectl get cluster
+   45  kubectl get clusters
+   46  kubectl get nodes
+   47  clear
+   48  kubectl get nodes
+   49  ls
+   50  cat 01-namespace.yaml
+   51  kubectl apply -f kubernetes/01-namespace.yaml
+   52  kubectl apply -f 01-namespace.yaml
+   53  cat 02-mongodb-pv.yaml
+   54  kubectl apply -f 02-mongodb-pv.yaml
+   55  kubectl apply -f 03-mongodb-pvc.yaml
+   56  ls
+   57  cat 04-configmap.yaml
+   58  vim 04-configmap.yaml
+   59  clear
+   60  ls
+   61  openssl rand -base64 32
+   62  vim 05-secrets.yaml
+   63  openssl rand -hex 32
+   64  vim 05-secrets.yaml
+   65  vim 04-configmap.yaml
+   66  kubectl apply -f 05-secrets.yaml && 04-configmap.yaml
+   67  kubectl apply -f 06-mongodb-service.yaml
+   68  kubectl apply -f  07-mongodb-statefulset.yaml
+   69  kubectl apply -f 07-mongodb-statefulset.yaml
+   70  kubectl get pods -n easyshop
+   71  ls -a
+   72  cd ..
+   73  ls -a
+   74  vim .env
+   75  vim 08-easyshop-deployment.yaml
+   76  rm 08-easyshop-deployment.yaml
+   77  cd kubernetes
+   78  ls
+   79  vim 08-easyshop-deployment.yaml
+   80  kubectl apply -f 08-easyshop-deployment.yaml
+   81  kubectl get pods -n easyshop
+   82  kubectl describe easyshop-747b5f88b9-48qcx -n easyshop
+   83  kubectl describe  pod easyshop-747b5f88b9-48qcx -n easyshop
+   84  istory
+   85  history
+   86  vim 08-easyshop-deployment.yaml
+   87  kubectl describe easyshop-747b5f88b9-48qcx -n easyshop
+   88  kubectl describe  pod easyshop-747b5f88b9-48qcx -n easyshop
+   89  ls
+   90  vim  04-configmap.yaml
+   91  kubectl apply -f 04-configmap.yaml
+   92  kubectl get pods -n easyshop
+   93  clear
+   94  kubectl get pods -n easyshop
+   95  ls
+   96  kubectl apply -f 09-easyshop-service.yaml
+   97  kubectl get all -n easyshop
+   98  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+   99  kubectl wait --namespace ingress-nginx   --for=condition=ready pod   --selector=app.kubernetes.io/component=controller   --timeout=90s
+  100*
+  101  ls
+  102  vim 10-ingress.yaml
+  103  kubectl apply -f 10-ingress.yaml
+  104  vim 11-hpa.yaml
+  105  kubectl apply -f 11-hpa.yaml
+  106  kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+  107  kubectl -n kube-system edit deployment metrics-server
+  108  kubectl -n kube-system rollout restart deployment metrics-server
+  109  kubectl get pods -n kube-syste
+  110  kubectl get pods -n kube-system
+  111  kubectl top nodes
+  112  kubectl get nodes
+  113  kubectl top nodes
+  114  kubectl apply -f 11-hpa.yaml
+  115  clear
+  116  ls
+  117  vim 12-migration-job.yaml
+  118  kubectl apply -f 12-migration-job.yaml
+  119  kubectl get jobs -n easyshop
+  120  kubectl logs db-migration -n easyshop
+  121  kubectl describe db-migration -n easyshop
+  122  kubectl describe job db-migration -n easyshop
+  123  kubectl get jobs -n easyshop
+  124  kubectl get ing -n easyshop
+  125  history
+
